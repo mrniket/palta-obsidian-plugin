@@ -3,23 +3,28 @@
 	"version": "1.0.0",
 	"description": "A plugin to render Bhatkhande notation for Tabla in Obsidian.",
 	"main": "main.js",
+	"type": "module",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+		"version": "node version-bump.mjs && git add manifest.json versions.json",
+		"test": "glob -c \"node --test-reporter=spec --loader tsx --no-warnings --test\" \"./**/*.test.ts\""
 	},
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^16.11.6",
+		"@types/jsdom": "^21.1.2",
+		"@types/node": "^20.5.9",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
 		"builtin-modules": "3.3.0",
 		"esbuild": "0.17.3",
+		"glob": "^10.3.4",
+		"jsdom": "^22.1.0",
 		"obsidian": "latest",
 		"tslib": "2.4.0",
+		"tsx": "^3.12.8",
 		"typescript": "4.7.4"
-	},
-	"dependencies": {}
+	}
 }

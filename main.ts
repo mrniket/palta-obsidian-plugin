@@ -1,4 +1,6 @@
 import { Plugin } from "obsidian";
+import { parsePaltaCodeBlock } from "src/codeBlockParser";
+import { renderWebComponent } from "src/webComponentRenderer";
 
 export default class PaltaPlugin extends Plugin {
 	async onload() {
@@ -7,22 +9,10 @@ export default class PaltaPlugin extends Plugin {
 		this.registerMarkdownCodeBlockProcessor(
 			"palta",
 			(source, el: HTMLElement, ctx) => {
-				const [vibhagsStr, matrasStr] =
-					this.splitVibhagsAndMatras(source);
-				// @ts-ignore
-				const paltaNote = el.createEl("palta-note");
-				paltaNote.setAttribute("vibhags", vibhagsStr);
-				paltaNote.innerHTML = matrasStr;
+				const paltaCodeBlockData = parsePaltaCodeBlock(source);
+				renderWebComponent(paltaCodeBlockData, el);
 			}
 		);
-	}
-
-	splitVibhagsAndMatras(source: string): [string, string] {
-		const sourceTrimmed = source.trim();
-		const newLineIndex = sourceTrimmed.indexOf("\n");
-		const vibhags = sourceTrimmed.substring(0, newLineIndex);
-		const matras = sourceTrimmed.substring(newLineIndex + 1);
-		return [vibhags, matras];
 	}
 
 	addWebComponentScriptIfNotExists() {
@@ -30,7 +20,7 @@ export default class PaltaPlugin extends Plugin {
 			const script = document.createElement("script");
 			script.id = "paltas-wc-script";
 			script.src =
-				"https://cdn.jsdelivr.net/npm/palta-note@1.0.0/dist/palta-note.es.js";
+				"https://cdn.jsdelivr.net/npm/palta-note@1.0.1/dist/palta-note.es.js";
 			script.defer = true;
 			script.async = true;
 			script.type = "module";
