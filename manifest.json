@@ -1,6 +1,6 @@
 {
-	"id": "palta-obsidian-plugin",
-	"name": "Palta Obsidian Plugin",
+	"id": "palta-note",
+	"name": "Palta Note",
 	"version": "1.1.1",
 	"minAppVersion": "0.15.0",
 	"description": "A plugin to render Bhatkhande notation for Tabla in Obsidian.",
