@@ -1,6 +1,6 @@
 # Palta Note Obsidian Plugin
 
-A plugin that allows you to write Kaydas, Gats and Relas in Obsidian. Under the hood it uses the [`<palta-note>`](https://github.com/mrniket/palta-note) web component.
+Write Kaydas, Gats and Relas in Bhatkhande notation in Obsidian. Under the hood it uses the [`<palta-note>`](https://github.com/mrniket/palta-note) web component.
 
 ![Demo of Palta Obsidian Plugin in use](docs/demo.gif)
 
