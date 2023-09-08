@@ -8,6 +8,6 @@ export function renderWebComponent(
 	for (const [key, value] of Object.entries(paltaCodeBlock.frontMatter)) {
 		paltaNoteElement.setAttribute(key, value);
 	}
-	paltaNoteElement.innerHTML = paltaCodeBlock.matras;
+	paltaNoteElement.textContent = paltaCodeBlock.matras;
 	parentElement.appendChild(paltaNoteElement);
 }
