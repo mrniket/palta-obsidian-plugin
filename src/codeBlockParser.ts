@@ -1,11 +1,3 @@
-// function splitFrontMatterAndComposition(source: string): [string, string] {
-//     const sourceTrimmed = source.trim();
-//     const newLineIndex = sourceTrimmed.indexOf("\n");
-//     const frontMatter = sourceTrimmed.substring(0, newLineIndex);
-//     const composition = sourceTrimmed.substring(newLineIndex + 1);
-//     return [frontMatter, composition];
-// }
-
 export interface PaltaCodeBlock {
 	frontMatter: { [key: string]: string };
 	matras: string;
