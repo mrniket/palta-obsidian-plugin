@@ -20,7 +20,7 @@ export default class PaltaPlugin extends Plugin {
 			const script = document.createElement("script");
 			script.id = "paltas-wc-script";
 			script.src =
-				"https://cdn.jsdelivr.net/npm/palta-note@1.0.1/dist/palta-note.es.js";
+				"https://cdn.jsdelivr.net/npm/palta-note@1.0.2/dist/palta-note.es.js";
 			script.defer = true;
 			script.async = true;
 			script.type = "module";
