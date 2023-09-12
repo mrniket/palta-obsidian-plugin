@@ -46,4 +46,27 @@ describe("codeBlockParser", () => {
 		const actual = parsePaltaCodeBlock(source);
 		assert.deepStrictEqual(actual, expected);
 	});
+
+	it("should parse palta code blocks with matras as dashes", () => {
+		const source = `
+            vibhags: X 2 0 3
+            ---
+            - - - -
+            - - - -
+            - - - -
+            - - - -
+        `;
+		const expected = {
+			frontMatter: {
+				vibhags: "X 2 0 3",
+			},
+			matras: `- - - -
+            - - - -
+            - - - -
+            - - - -
+            `.trim(),
+		};
+		const actual = parsePaltaCodeBlock(source);
+		assert.deepStrictEqual(actual, expected);
+	});
 });

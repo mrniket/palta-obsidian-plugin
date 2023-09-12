@@ -6,12 +6,13 @@ export interface PaltaCodeBlock {
 function splitFrontMatterAndComposition(
 	source: string
 ): [string | null, string] {
-	// check if front matter is present
-	if (source.match(/\s+-+\s+/i) === null) {
+	const matches = source.match(/^([^-]*)\s+-{3,}\s+((.|\n)*)$/i);
+	if (matches === null) {
+		// assume that there is no front matter
 		return [null, source.trim()];
 	}
-	const [frontMatter, composition] = source.trim().split(/\s+-+\s+/i, 2);
-	return [frontMatter, composition];
+	const [, frontMatter, composition] = matches;
+	return [frontMatter.trim(), composition.trim()];
 }
 
 function parseFrontMatter(frontMatter: string | null): {
