@@ -4,8 +4,11 @@ export function renderWebComponent(
 	paltaCodeBlock: PaltaCodeBlock,
 	parentElement: HTMLElement
 ) {
-	const paltaNoteElement = document.createElement("palta-note");
-	for (const [key, value] of Object.entries(paltaCodeBlock.frontMatter)) {
+	// @ts-ignore
+	const paltaNoteElement = parentElement.createEl("palta-note");
+	for (const [key, value] of Object.entries(
+		paltaCodeBlock.frontMatter
+	)) {
 		paltaNoteElement.setAttribute(key, value);
 	}
 	paltaNoteElement.textContent = paltaCodeBlock.matras;
