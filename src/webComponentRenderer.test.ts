@@ -1,17 +1,17 @@
-import { beforeEach, describe, it } from "node:test";
-import { JSDOM } from "jsdom";
-import assert from "node:assert";
+/**
+ * @vitest-environment happy-dom
+ */
+
+import { beforeEach, describe, it, expect, beforeAll } from "vitest";
 import { renderWebComponent } from "./webComponentRenderer";
-
-const { window } = new JSDOM("<!doctype html><html><body></body></html>");
-
-// Save these two objects in the global space so that libraries/tests
-// can hook into them, using the above doc definition.
-global.document = window.document;
-// @ts-ignore
-global.window = window;
+import PaltaNoteDefaults from "palta-note";
 
 describe("webComponentRenderer", () => {
+	beforeAll(() => {
+		const { PaltaNote } = PaltaNoteDefaults;
+		customElements.define("palta-note", PaltaNote);
+	})
+
 	beforeEach(() => {
 		window.document.body.innerHTML = "";
 	});
@@ -19,11 +19,10 @@ describe("webComponentRenderer", () => {
 	it("should render a web component", () => {
 		const paltaCodeBlock = {
 			frontMatter: {},
-			matras: "",
+			matras: "Dha",
 		};
 		renderWebComponent(paltaCodeBlock, window.document.body);
-
-		assert.notEqual(window.document.body.querySelector("palta-note"), null);
+		expect(window.document.body.innerHTML).toContain("palta-note");
 	});
 
 	it("should render front matter as attributes", () => {
@@ -31,11 +30,11 @@ describe("webComponentRenderer", () => {
 			frontMatter: {
 				vibhags: "X 2 0 3",
 			},
-			matras: "",
+			matras: "Dha",
 		};
 		renderWebComponent(paltaCodeBlock, window.document.body);
 		const paltaNote = window.document.body.querySelector("palta-note");
-		assert.equal(paltaNote?.getAttribute("vibhags"), "X 2 0 3");
+		expect(paltaNote?.getAttribute("vibhags")).toBe("X 2 0 3");
 	});
 
 	it("should render matras as inner text", () => {
@@ -45,6 +44,6 @@ describe("webComponentRenderer", () => {
 		};
 		renderWebComponent(paltaCodeBlock, window.document.body);
 		const paltaNote = window.document.body.querySelector("palta-note");
-		assert.equal(paltaNote?.innerHTML, "Dha Dhin Dhin Dha");
+		expect(paltaNote?.innerHTML).toEqual("Dha Dhin Dhin Dha");
 	});
 });

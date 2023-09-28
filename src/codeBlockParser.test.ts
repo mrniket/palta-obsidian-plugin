@@ -1,6 +1,5 @@
-import { describe, it } from "node:test";
+import { describe, it, expect } from "vitest";
 import { parsePaltaCodeBlock } from "./codeBlockParser";
-import * as assert from "node:assert";
 
 describe("codeBlockParser", () => {
 	it("should parse palta code blocks", () => {
@@ -25,7 +24,7 @@ describe("codeBlockParser", () => {
 		};
 
 		const actual = parsePaltaCodeBlock(source);
-		assert.deepStrictEqual(actual, expected);
+        expect(actual).toStrictEqual(expected);
 	});
 
 	it("should parse palta code blocks with no front matter", () => {
@@ -44,7 +43,7 @@ describe("codeBlockParser", () => {
             `.trim(),
 		};
 		const actual = parsePaltaCodeBlock(source);
-		assert.deepStrictEqual(actual, expected);
+		expect(actual).toStrictEqual(expected);
 	});
 
 	it("should parse palta code blocks with matras as dashes", () => {
@@ -67,6 +66,6 @@ describe("codeBlockParser", () => {
             `.trim(),
 		};
 		const actual = parsePaltaCodeBlock(source);
-		assert.deepStrictEqual(actual, expected);
+		expect(actual).toStrictEqual(expected);
 	});
 });

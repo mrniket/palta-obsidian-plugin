@@ -1,11 +1,11 @@
 import { Plugin } from "obsidian";
 import { parsePaltaCodeBlock } from "src/codeBlockParser";
 import { renderWebComponent } from "src/webComponentRenderer";
+import PaltaNoteDefaults from "palta-note";
 
 export default class PaltaPlugin extends Plugin {
 	async onload() {
-		this.addWebComponentScriptIfNotExists();
-
+		this.registerCustomElementIfNotExists();
 		this.registerMarkdownCodeBlockProcessor(
 			"palta",
 			(source, el: HTMLElement, ctx) => {
@@ -15,17 +15,11 @@ export default class PaltaPlugin extends Plugin {
 		);
 	}
 
-	addWebComponentScriptIfNotExists() {
-		if (!document.getElementById("paltas-wc-script")) {
-			const script = document.createElement("script");
-			script.id = "paltas-wc-script";
-			script.src = "https://cdn.jsdelivr.net/npm/palta-note@latest";
-			script.defer = true;
-			script.async = true;
-			script.type = "module";
-			document.head.appendChild(script);
+	registerCustomElementIfNotExists() {
+		if (customElements.get("palta-note") !== undefined) {
+			return;
 		}
+		const { PaltaNote } = PaltaNoteDefaults;
+		customElements.define("palta-note", PaltaNote);
 	}
-
-	onunload() {}
 }
