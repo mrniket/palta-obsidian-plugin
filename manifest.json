@@ -3,7 +3,7 @@
 	"name": "Palta Note",
 	"version": "1.3.0",
 	"minAppVersion": "0.15.0",
-	"description": "A plugin to render Bhatkhande notation for Tabla in Obsidian.",
+	"description": "Render Bhatkhande notation for Tabla.",
 	"author": "Niket Shah",
 	"isDesktopOnly": false
 }
