@@ -6,3 +6,10 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+body {
+	--palta-accent-color: var(--interactive-accent);
+	--palta-text-color: var(--text-normal);
+	/* --font-text is the font family in the theme */
+	/* --palta-font-family: var(--font-text); */
+	--palta-font-text-size: var(--font-text-size);
+}
