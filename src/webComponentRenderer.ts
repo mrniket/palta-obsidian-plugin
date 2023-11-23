@@ -13,6 +13,7 @@ export function renderWebComponent(
 		// @ts-ignore
 		paltaNoteElement = document.createElement('palta-note') as HTMLElement
 	}
+	paltaNoteElement.setAttribute("renderMode", "shorthand");
 	for (const [key, value] of Object.entries(paltaCodeBlock.frontMatter)) {
 		paltaNoteElement.setAttribute(key, value);
 	}
