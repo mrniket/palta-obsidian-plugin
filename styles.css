@@ -11,5 +11,5 @@ body {
 	--palta-text-color: var(--text-normal);
 	/* --font-text is the font family in the theme */
 	/* --palta-font-family: var(--font-text); */
-	--palta-font-text-size: var(--font-text-size);
+	--palta-text-size: var(--font-text-size);
 }

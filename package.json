@@ -28,6 +28,6 @@
 		"vitest": "^0.34.5"
 	},
 	"dependencies": {
-		"palta-note-test": "^0.1.2"
+		"palta-note-test": "^0.1.3"
 	}
 }
