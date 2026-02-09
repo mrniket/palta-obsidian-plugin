@@ -4,12 +4,14 @@
 
 import { beforeEach, describe, it, expect, beforeAll } from "vitest";
 import { renderWebComponent } from "./webComponentRenderer";
-import PaltaNoteDefaults from "palta-note";
+import PaltaNoteDefaults from "palta-note-test";
 
 describe("webComponentRenderer", () => {
 	beforeAll(() => {
-		const { PaltaNote } = PaltaNoteDefaults;
-		customElements.define("palta-note", PaltaNote);
+		if (!customElements.get("palta-note")) {
+			const { PaltaNote } = PaltaNoteDefaults;
+			customElements.define("palta-note", PaltaNote);
+		}
 	})
 
 	beforeEach(() => {
