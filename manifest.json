@@ -1,7 +1,7 @@
 {
 	"id": "palta-note",
 	"name": "Palta Note",
-	"version": "1.7.2",
+	"version": "1.7.3",
 	"minAppVersion": "0.15.0",
 	"description": "Render Bhatkhande notation for Tabla.",
 	"author": "Niket Shah",

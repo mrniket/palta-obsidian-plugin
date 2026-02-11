@@ -1,6 +1,6 @@
 {
 	"name": "palta-obsidian-plugin",
-	"version": "1.7.2",
+	"version": "1.7.3",
 	"description": "A plugin to render Bhatkhande notation for Tabla in Obsidian.",
 	"main": "main.js",
 	"type": "module",
